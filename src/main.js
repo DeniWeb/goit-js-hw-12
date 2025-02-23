@@ -16,7 +16,7 @@ const refs = {
 
 let currentPage = 1;
 let currentQuery = '';
-const perPage = 39;
+const perPage = 40;
 
 refs.form.addEventListener('submit', async e => {
   e.preventDefault();
