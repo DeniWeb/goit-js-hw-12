@@ -16,7 +16,7 @@ const refs = {
 
 let currentPage = 1;
 let currentQuery = '';
-const perPage = 40;
+const perPage = 39;
 
 refs.form.addEventListener('submit', async e => {
   e.preventDefault();
@@ -64,6 +64,7 @@ refs.form.addEventListener('submit', async e => {
 refs.btnLoadMore.addEventListener('click', async () => {
   currentPage += 1;
   refs.loader.classList.remove('hidden');
+  refs.btnLoadMore.classList.add('hidden');
 
   try {
     const response = await fetchImages(currentQuery, currentPage);
@@ -71,6 +72,7 @@ refs.btnLoadMore.addEventListener('click', async () => {
     if (images.length > 0) {
       renderValue(images);
       smoothScroll();
+      refs.btnLoadMore.classList.remove('hidden');
     }
 
     const totalPages = Math.ceil(response.totalHits / perPage);
