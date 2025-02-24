@@ -41,7 +41,9 @@ refs.form.addEventListener('submit', async e => {
     const images = response.hits || [];
     if (images.length > 0) {
       renderValue(images);
-      refs.btnLoadMore.classList.remove('hidden');
+      if (response.totalHits > perPage) {
+        refs.btnLoadMore.classList.remove('hidden');
+      }
     } else {
       iziToast.info({
         title: 'Info',
